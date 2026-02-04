@@ -2,6 +2,37 @@ Skatto — Full Implementation Instructions for Ronny
 
 Visual source of truth: Homepage design based on 1920 px wide canvas (see attached image)
 
+Introduction — Visual Reference (Source of Truth)
+
+The following image is the primary visual reference for the Skatto website:
+
+Homepage reference image:
+https://github.com/Lillyriemer/skatto/blob/main/skattohp.png?raw=true
+
+This image represents:
+	•	the intended look and feel
+	•	the layout structure
+	•	the visual hierarchy
+	•	the tone and calmness of the product
+
+All implementation decisions must align with this reference.
+
+Rules for interpretation
+	•	This image is not decorative inspiration — it is a design specification
+	•	Layout, spacing, proportions, hierarchy, and tone should follow this reference
+	•	Minor responsive adjustments are expected, but the overall visual logic must remain intact
+	•	Do not reinterpret, redesign, or “improve” the visual language
+	•	If a detail is unclear, reuse existing patterns from the reference or ask for clarification
+
+Priority order
+
+When implementing Skatto, follow this priority:
+	1.	This visual reference image
+	2.	The written instructions in this document
+	3.	Provided graphic assets and design tokens
+
+If there is ever a conflict:
+	•	The visual reference image wins
 ⸻
 
 1. Product vision (non-negotiable)
