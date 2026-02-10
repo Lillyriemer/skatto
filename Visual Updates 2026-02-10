@@ -1,0 +1,286 @@
+LUMUS
+
+Feb 10
+
+Tab & URL Behavior 
+
+General concept
+
+The calculator selector (Enskildfirma / Anställning / Kryptoskatt) must be implemented as a tab interface, not as buttons.
+	•	Tabs represent different modes of the same calculator
+	•	There is one shared page layout
+	•	Only the active tab state, form fields, calculation logic, and “Så räknar vi” content change
+
+The attached images show the visual reference for the tab states.
+
+⸻
+
+URL ↔ Tab Mapping
+
+Each tab must be directly connected to a URL.
+
+URL rules
+	•	/enskildfirma → Enskildfirma tab is active
+	•	/anstallning → Anställning tab is active
+	•	/kryptoskatt → Kryptoskatt tab is active
+	•	/ (root) → defaults to Enskildfirma
+
+Behavior
+	•	Visiting a URL must automatically activate the corresponding tab
+	•	Switching tabs must update the URL without a full page reload
+	•	The page layout must remain identical across all URLs
+
+⸻
+
+Tab Switching Logic
+
+When a tab is selected (by click or by URL):
+	1.	Activate the corresponding tab visually
+	2.	Show the correct form fields for that calculator
+	3.	Use the correct calculation logic
+	4.	Render the matching “Så räknar vi” explanation below
+	5.	Keep header, calculator card container, and footer unchanged
+
+This is one component with multiple states, not separate pages.
+
+⸻
+
+Visual Rules for Tabs 
+
+Active tab (selected state)
+
+As shown in the images Tab example URL Enskildfirma.png and Tab example URL krypto.png:
+	•	Background color = same gradient/background as the calculator card
+	•	Tab visually merges into the top edge of the card
+	•	No bottom border (the card continues from the tab)
+	•	Text and icon are white
+	•	Active tab appears visually “attached” to the card
+
+Inactive tabs
+
+As shown in the images:
+	•	Background = page background (off-white)
+	•	Thin outline/border in brand color
+	•	Text and icon in brand color
+	•	Inactive tabs sit slightly above the card
+	•	They do not visually connect to the card
+
+Important
+	•	Tabs must not look like primary action buttons
+	•	No hover animations that suggest a CTA
+	•	The visual difference between active and inactive tabs must be clear at a glance
+
+⸻
+
+Layout Rules
+	•	Tabs are positioned directly above the calculator card
+	•	Tabs are horizontally aligned
+	•	Only one tab can be active at a time
+	•	The calculator card always stays in the same position
+
+⸻
+
+Calculator Card Background — Color & Gradient Rules
+
+Background color of the calculator card
+
+The calculator card uses a horizontal linear gradient.
+
+Gradient values (left → right):
+	•	Start color: #7E8EC6
+	•	End color: #6389C6
+
+Usage rules
+	•	This gradient is used for:
+	•	the full calculator card background
+	•	the active tab background (must visually merge with the card)
+	•	The gradient direction must be consistent across:
+	•	all calculator modes
+	•	all URLs
+	•	all screen sizes
+
+Contrast rules
+	•	All text and form fields inside the gradient card use:
+	•	white (#FFFFFF) for text
+	•	white backgrounds for inputs
+	•	Icons inside the active tab are white
+	•	Inactive tabs do not use the gradient
+
+Important consistency rule
+
+The gradient is part of the core visual identity and must never:
+	•	change between tabs
+	•	change between URLs
+	•	be replaced with a flat color
+
+⸻
+
+Summary (single sentence)
+
+This interface is one calculator with three tab-based modes, where each mode is addressable via its own URL and visually indicated by a tab that merges into the calculator card when active.  
+Så räknar vi part
+
+Implement the “Så räknar vi” breakdown according to the visual guideline.
+
+Reference image (visual guide):
+https://github.com/Lillyriemer/skatto/blob/main/Sa%20raknar%20vi%20visual%20guideline.png?raw=true
+
+General rule:
+“Så räknar vi” is a user-facing explanation layer that appears below the calculator results. It should be readable, sectional, calm, editorial, and not look like a debug dump or raw data list.
+
+Structural requirements:
+	1.	Show an initial summary paragraph that reads like a calm explanation, not a list. Example structure:
+	•	Lägg undan totalt: X kr
+	•	Skatt/avgifter: Y kr
+	•	Momsnetto: Z kr
+	•	Redan betald preliminärskatt: -W kr
+	2.	Provide a toggle link labeled “Visa hela beräkningen” that expands a more detailed breakdown when clicked.
+	3.	The expanded breakdown must be structured into three clear sections with headings (as shown in the visual guideline):
+	•	ÖVERSKOTT
+• Vinst
+• Schablonavdrag
+→ Överskott (bold)
+	•	BESKATTNINGSBAR INKOMST
+• Överskott
+• Grundavdrag
+→ Beskattningsbar inkomst (bold)
+	•	SLUTLIG SKATT
+• Egenavgifter
+• Nedsättning av egenavgifter
+• Kommunalskatt
+• Betald preliminärskatt
+• Moms
+→ Total skattefordran / kvarskatt (bold)
+	4.	At the bottom of the detailed breakdown, include reference text listing the data sources (plain text, not values):
+	•	Egenavgifter
+	•	Grundavdrag
+	•	Schablonavdrag
+	•	Kommunalskatt (SCB)
+	•	Statlig inkomstskatt
+	•	Jobbskatteavdrag
+	•	Skattereduktion förvärvsinkomst
+	•	Nedsättning av egenavgifter
+
+Visual rules (exactly as in the guideline):
+• Section headings use uppercase letter style, spacing, and font weight consistent with the guideline.
+• Values are aligned to the right.
+• Only final totals (section subtotals) should be bold.
+• Use spacing between items and sections to create room and clarity — do not cram items together.
+• No border boxes, no horizontal rules except subtle separators between major sections.
+
+Behavior:
+	•	The detailed breakdown is hidden initially.
+	•	Clicking “Visa hela beräkningen” expands the breakdown inline.
+	•	This section is purely informational and does not trigger recalculation.
+	•	If values are zero or empty, still show sections according to the structure with zeros, not removed items.
+
+Purpose reminder:
+“Så räknar vi” is an explanation for the user, not a raw data log. It must feel calm, clear, and trustworthy.
+
+  Footer — Global Component Instructions for Lumus
+
+Current issue
+
+The footer is currently rendered as a simple text block (see first reference image).
+This is not correct and does not match the Skatto visual identity.
+
+The footer must be replaced by a designed, branded footer section as shown in the second reference image.
+
+⸻
+
+Footer Concept (Important)
+
+The footer is a visual closing section, not just navigation.
+
+It represents:
+	•	“krångel” (complexity)
+	•	turning into clarity
+	•	calm ending of the page
+
+The footer must feel intentional, graphic, and consistent across all pages.
+
+⸻
+
+Footer Structure (Top → Bottom)
+
+1. Graphic section (background / top part)
+
+At the top of the footer, render a static graphic image provided by design.
+
+This image will include:
+	•	the krångel illustration
+	•	the Skatto logo
+	•	the slogan “SKATT, UTAN KRÅNGEL.”
+
+The graphic is provided here skatto_footer image.png and must be rendered as-is.
+
+Rules:
+	•	No text is recreated manually inside this graphic
+	•	No overlays, no additional elements
+	•	The graphic spans the full width of the content area
+	•	Background color matches the page background (#F8F9FD)
+
+⸻
+
+2. Footer content below the graphic
+
+Directly below the graphic, render the footer content in plain HTML.
+
+Footer menu
+Show a simple horizontal text menu with the following links:
+	•	Om Skatto
+	•	Kontakt
+	•	Integritetspolicy
+	•	Villkor
+	•	Cookies
+
+Rules:
+	•	Text-only links (no buttons)
+	•	Brand color text (#6389C6)
+	•	Calm, low visual weight
+	•	Same menu appears on all pages
+
+⸻
+
+3. Disclaimer text
+
+Below the menu, render the disclaimer text:
+
+Skatto är ett beräkningsverktyg som ger uppskattningar baserat på gällande schabloner.
+Resultaten ersätter inte rådgivning från Skatteverket eller redovisningskonsult.
+
+Rules:
+	•	Smaller font size than menu
+	•	Neutral text color
+	•	Clearly readable but visually secondary
+	•	No background box
+
+⸻
+
+4. Footer scope & reuse
+	•	This footer component appears on all pages
+	•	The footer is identical across:
+	•	/
+	•	/enskildfirma
+	•	/anstallning
+	•	/kryptoskatt
+	•	No variation per calculator
+
+⸻
+
+Visual Consistency Rules
+	•	Footer background blends into the page background
+	•	No hard separators or boxed containers
+	•	The footer should feel like a soft landing, not a hard stop
+
+⸻
+
+Summary (important)
+
+The footer is a designed closing section with:
+	1.	One static graphic (krångel + logo + slogan)
+	2.	A simple text menu
+	3.	A legal disclaimer
+
+It must not look like default site chrome or autogenerated layout.
+ 
