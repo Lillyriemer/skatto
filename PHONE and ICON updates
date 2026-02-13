@@ -1,0 +1,261 @@
+SKATTO – MOBILE BREAKPOINT + ICON + TAB SPECIFICATION
+
+This document defines how the mobile version must behave visually and structurally.
+It also clarifies icon usage and tab/URL logic.
+
+Visual reference (source of truth for layout and spacing):
+https://github.com/Lillyriemer/skatto/blob/main/Skatto%20Phone%20Example.png?raw=true
+
+Footer image reference:
+https://github.com/Lillyriemer/skatto/blob/main/Skatto%20phone%20footer.png?raw=true
+
+⸻
+
+1. BREAKPOINT
+
+Mobile layout applies at:
+
+max-width: 768px
+
+Primary reference width:
+390px (standard iPhone width)
+
+Content container:
+90–92% of viewport width
+Max-width: 520px
+
+White space must be preserved.
+No compressed spacing.
+
+⸻
+
+2. HEADER (MOBILE)
+
+Structure (stacked vertically):
+
+• Small Skatto logo top left
+• “BERÄKNA” button top right
+• Large Skatto logo centered
+• Slogan: SKATT, UTAN KRÅNGEL.
+• Three checkmarks stacked vertically
+
+Adjustments from desktop:
+
+• Checkmarks stack vertically
+• Generous vertical spacing between elements
+• Button remains pill-shaped
+• Logo scales proportionally
+
+Hierarchy must remain identical to desktop, only layout changes.
+
+⸻
+
+3. TAB SYSTEM (MOBILE AND DESKTOP – SAME LOGIC)
+
+Tabs must visually look like tabs, not buttons.
+
+Each calculator has its own URL:
+
+/enskildfirma
+/anstallning
+/kryptoskatt
+
+Behavior:
+
+• Clicking a tab changes the URL
+• Loading a URL preselects the correct tab
+• No tab switching without URL change
+
+Visual behavior:
+
+Active tab:
+• Filled with gradient (same as calculator card)
+• White icon
+• White text
+• No bottom border
+• Visually merged into calculator card
+
+Inactive tab:
+• White background
+• Thin border in gradient color
+• Lavender icon
+• Dark text
+
+On mobile:
+Tabs must be horizontally scrollable if needed.
+
+Tab and URL logic must be identical across all breakpoints.
+
+⸻
+
+4. CALCULATOR CARD
+
+Gradient background (all breakpoints):
+
+Linear gradient:
+#7E8EC6 → #6389C6
+
+Border radius: 20px
+Internal padding: 24px
+Field spacing: 16–20px
+
+Inputs:
+• White background
+• 12–14px border radius
+• Subtle shadow
+• Clear readable font
+
+No heavy outlines.
+
+⸻
+
+5. ICON SYSTEM (ALL BREAKPOINTS)
+
+Icons must be used consistently on:
+
+• Tabs
+• Text blocks
+• Highlight sections
+• Desktop and mobile
+
+No black icons.
+Only brand lavender or off-white versions.
+
+⸻
+
+Icon Assets
+
+Anställning – Lavender:
+https://github.com/Lillyriemer/skatto/blob/main/Skatto_Icons_Ansta%CC%88llning_Lavender.png?raw=true
+
+Anställning – Off-white:
+https://github.com/Lillyriemer/skatto/blob/main/Skatto_Icons_Ansta%CC%88llning_off%20white.png?raw=true
+
+Enskild firma – Lavender:
+https://github.com/Lillyriemer/skatto/blob/main/Skatto_Icons_Enskild%20firma_Lavender.png?raw=true
+
+Enskild firma – Off-white:
+https://github.com/Lillyriemer/skatto/blob/main/Skatto_Icons_Enskild%20firma_off%20white.png?raw=true
+
+Krypto – Lavender:
+https://github.com/Lillyriemer/skatto/blob/main/Skatto_Icons_Krypto_Lavender.png?raw=true
+
+Krypto – Off-white:
+https://github.com/Lillyriemer/skatto/blob/main/Skatto_Icons_Krypto_off%20white.png?raw=true
+
+Usage rules:
+
+• Active tab → Off-white icon
+• Inactive tab → Lavender icon
+• Text sections → Lavender
+• On gradient backgrounds → Off-white
+
+Icons must scale proportionally and maintain consistent visual weight.
+
+Icons must also be used on the desktop breakpoint.
+
+⸻
+
+6. “SÅ RÄKNAR VI” SECTION
+
+Current implementation is incorrect.
+
+It must visually match this structure:
+https://github.com/Lillyriemer/skatto/blob/main/Sa%20raknar%20vi%20visual%20guideline.png?raw=true
+
+Structure:
+
+Section title:
+Så räknar vi
+
+Toggle link:
+Visa hela beräkningen ▼
+
+Collapsed state:
+Show short summary only.
+
+Expanded state:
+Show grouped structured calculation blocks.
+
+Typography:
+
+Group headers:
+• ALL CAPS
+• Light weight
+• Increased letter spacing
+• Slightly larger than body text
+
+Example structure:
+
+ÖVERSKOTT
+Vinst
+Schablonavdrag
+Överskott (bold)
+
+BESKATTNINGSBAR INKOMST
+Grundavdrag
+Beskattningsbar inkomst (bold)
+
+TOTAL SKATTEFORDRAN (bold)
+
+Spacing:
+
+Desktop: 40px between blocks
+Mobile: 28px between blocks
+
+Mobile layout:
+Single column
+Amounts right aligned
+Subtle dividers only
+
+No heavy borders.
+
+Layout must feel structured, calm and readable.
+
+⸻
+
+7. FOOTER (GLOBAL COMPONENT)
+
+Footer must be identical across all pages and breakpoints.
+
+Implementation:
+	1.	Render footer image full width:
+https://github.com/Lillyriemer/skatto/blob/main/Skatto%20phone%20footer.png?raw=true
+	2.	Below image render:
+
+© Skatto 2026
+Om Skatto
+Kontakt
+Integritetspolicy
+Villkor
+Cookies
+	3.	Below menu add disclaimer text:
+
+Skatto är ett beräkningsverktyg som ger uppskattningar baserat på gällande schabloner. Resultaten ersätter inte rådgivning från Skatteverket eller redovisningskonsult.
+
+Footer must appear on all pages.
+
+⸻
+
+8. DESIGN PRINCIPLES
+
+Mobile must feel:
+
+• Calm
+• Spacious
+• Structured
+• Not crowded
+
+White space is intentional.
+Hierarchy is more important than decoration.
+No visual clutter.
+
+Tab logic, icon logic and structure must remain consistent across desktop and mobile.
+
+⸻
+
+If you want, I can also generate:
+
+• A strict component checklist
+• A technical implementation outline
+• Or a minimal condensed version for internal use
